@@ -7,7 +7,7 @@ const Banner = () => {
     <div className="container mx-auto my-20 px-4">
       <div className="min-h-[500px] rounded-3xl bg-[#222630] flex flex-col lg:flex-row justify-between items-center gap-12 px-8 md:px-14 lg:px-16 py-12 overflow-hidden">
         
-        {/* Left Content */}
+        
         <div className="flex-1 max-w-2xl">
           <p className="text-[#c2f800] font-bold tracking-[3px] text-sm mb-6">
             WORKOUT LIBRARY
@@ -30,7 +30,7 @@ const Banner = () => {
           </div>
         </div>
 
-        {/* Right Image */}
+        
         <div className="flex-1 flex justify-center lg:justify-end">
           <Image
             src={bannerImg}
