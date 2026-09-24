@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/shared/Navbar/Navbar";
 
 import Footer from "./components/shared/Footer/Footer";
+import { FitLogProvider } from "./Context/FitlogContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,11 +27,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
+      
       <body className="min-h-full flex flex-col bg-[#0c0d10]">
-        <Navbar/>
-        {children}
-        <Footer/>
-        </body>
+        <FitLogProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </FitLogProvider>
+      </body>
+      
     </html>
   );
 }
