@@ -1,6 +1,10 @@
+"use client"
+import { useFitLog } from "@/app/Context/FitlogContext";
 import Link from "next/link";
 
 const Navbar = () => {
+  const {savedExercises,todaysPlan}=useFitLog()
+  
   const links = (
     <>
       <li>
@@ -69,14 +73,14 @@ const Navbar = () => {
             <button className="font-bold flex items-center gap-2 hover:text-[#c2f800] transition-colors">
               Plan
               <span className="bg-[#c2f800] text-black rounded-full min-w-8 h-8 flex items-center justify-center px-2">
-                0
+                {todaysPlan.length}
               </span>
             </button>
 
             <button className="font-bold flex items-center gap-2 hover:text-[#c2f800] transition-colors">
               Saved
               <span className="text-white border border-gray-500 rounded-full min-w-8 h-8 flex items-center justify-center px-2">
-                0
+                {savedExercises.length}
               </span>
             </button>
           </div>
