@@ -10,7 +10,7 @@ const Navbar = () => {
       </li>
 
       <li>
-        <Link href={"myplan"} className="font-semibold hover:text-[#c2f800] transition-colors duration-200">
+        <Link href={"/myplan"} className="font-semibold hover:text-[#c2f800] transition-colors duration-200">
           My Plan
         </Link>
       </li>
