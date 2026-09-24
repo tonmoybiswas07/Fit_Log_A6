@@ -15,26 +15,23 @@ const TodaysPlanCard = ({ data, onRemove }: PlanCardProps) => {
   const handleDone = () => {
     toast.success(`${data.name} completed! `);
 
-    
     onRemove?.(data.id);
   };
 
   return (
     <div className="group relative overflow-hidden rounded-[20px] border border-[#292e38] bg-[#11151b] transition-all duration-300 hover:border-[#00d9c6] hover:shadow-[0_10px_35px_rgba(0,217,198,0.06)]">
-      
       {/* Top Accent */}
       <div className="absolute left-0 top-0 h-[2px] w-full bg-[#c2ff29]" />
 
       <div className="flex flex-col gap-4 p-3 sm:flex-row sm:items-center sm:p-4">
-        
         {/* IMAGE */}
         <div className="relative h-[110px] w-full shrink-0 overflow-hidden rounded-xl sm:h-[88px] sm:w-[155px]">
           <Image
             src={data.image}
             alt={data.name}
-            fill
-            sizes="155px"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            width={500}
+            height={300}
+            className="h-auto w-full object-cover"
           />
 
           {/* Image Overlay */}
@@ -43,7 +40,6 @@ const TodaysPlanCard = ({ data, onRemove }: PlanCardProps) => {
 
         {/* CONTENT */}
         <div className="min-w-0 flex-1">
-          
           {/* Exercise Name */}
           <h2 className="truncate text-lg font-black uppercase text-white">
             {data.name}
@@ -56,31 +52,21 @@ const TodaysPlanCard = ({ data, onRemove }: PlanCardProps) => {
 
           {/* Stats */}
           <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-2">
-            
             {/* Duration */}
             <div className="flex items-center gap-1.5 text-sm text-gray-300">
-              <FaRegClock
-                size={13}
-                className="text-[#c2ff29]"
-              />
+              <FaRegClock size={13} className="text-[#c2ff29]" />
               <span>{data.duration} min</span>
             </div>
 
             {/* Calories */}
             <div className="flex items-center gap-1.5 text-sm text-gray-300">
-              <FaFire
-                size={13}
-                className="text-[#c2ff29]"
-              />
+              <FaFire size={13} className="text-[#c2ff29]" />
               <span>{data.caloriesBurned} kcal</span>
             </div>
 
             {/* Rating */}
             <div className="flex items-center gap-1.5 text-sm text-gray-300">
-              <FaStar
-                size={13}
-                className="text-[#c2ff29]"
-              />
+              <FaStar size={13} className="text-[#c2ff29]" />
               <span>{data.rating}</span>
             </div>
           </div>
@@ -88,7 +74,6 @@ const TodaysPlanCard = ({ data, onRemove }: PlanCardProps) => {
 
         {/* ACTION BUTTONS */}
         <div className="flex w-full shrink-0 items-center gap-2 sm:w-auto">
-          
           {/* View Details */}
           <Link
             href={`/fitlogs/${data.id}`}

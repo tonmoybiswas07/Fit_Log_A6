@@ -1,7 +1,7 @@
 export interface IExercise {
   id: number;
   name: string;
-  image: string[];
+  image: string;
   muscleGroups: string[];
   equipment: string;
   difficulty: string;
