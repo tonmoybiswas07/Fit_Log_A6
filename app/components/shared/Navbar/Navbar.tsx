@@ -1,20 +1,34 @@
-"use client"
+"use client";
+
 import { useFitLog } from "@/app/Context/FitlogContext";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
-  const {savedExercises,todaysPlan}=useFitLog()
-  
+  const { savedExercises, todaysPlan } = useFitLog();
+
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const links = (
     <>
       <li>
-        <Link href={"/"} className="font-semibold hover:text-[#c2f800] transition-colors duration-200">
+        <Link
+          href="/"
+          className="font-semibold hover:text-[#c2f800] transition-colors duration-200"
+        >
           Workouts
         </Link>
       </li>
 
       <li>
-        <Link href={"/myplan"} className="font-semibold hover:text-[#c2f800] transition-colors duration-200">
+        <Link
+          href="/myplan"
+          className="font-semibold hover:text-[#c2f800] transition-colors duration-200"
+        >
           My Plan
         </Link>
       </li>
@@ -23,9 +37,8 @@ const Navbar = () => {
 
   return (
     <div className="border-b border-gray-700">
-      <div className="container mx-auto px-4 ">
-        <div className="navbar min-h-[80px] ">
-          {/* Left */}
+      <div className="container mx-auto px-4">
+        <div className="navbar min-h-[80px]">
           <div className="navbar-start">
             <div className="dropdown">
               <div
@@ -58,29 +71,29 @@ const Navbar = () => {
               </ul>
             </div>
 
-            <h3 className="text-3xl md:text-4xl font-extrabold tracking-wide">
-              FIT<span className="text-[#c2f800]">LOG</span>
-            </h3>
+            <Link href={"/"}>
+              <h3 className="text-3xl md:text-4xl font-extrabold tracking-wide">
+                FIT<span className="text-[#c2f800]">LOG</span>
+              </h3>
+            </Link>
           </div>
 
-          {/* Center */}
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal gap-3 text-lg px-1">{links}</ul>
           </div>
 
-          {/* Right */}
           <div className="navbar-end gap-3 md:gap-5">
             <button className="font-bold flex items-center gap-2 hover:text-[#c2f800] transition-colors">
               Plan
               <span className="bg-[#c2f800] text-black rounded-full min-w-8 h-8 flex items-center justify-center px-2">
-                {todaysPlan.length}
+                {mounted ? todaysPlan.length : 0}
               </span>
             </button>
 
             <button className="font-bold flex items-center gap-2 hover:text-[#c2f800] transition-colors">
               Saved
               <span className="text-white border border-gray-500 rounded-full min-w-8 h-8 flex items-center justify-center px-2">
-                {savedExercises.length}
+                {mounted ? savedExercises.length : 0}
               </span>
             </button>
           </div>
