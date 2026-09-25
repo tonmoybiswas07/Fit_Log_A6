@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -8,11 +9,7 @@ import TodaysPlanCard from "../components/PlanCard/TodaysPlanCard";
 import SaveCard from "../components/PlanCard/SaveCard";
 
 const MyPlan = () => {
-  const {
-    todaysPlan,
-    setTodaysPlan,
-    savedExercises,
-  } = useFitLog();
+  const { todaysPlan, setTodaysPlan, savedExercises } = useFitLog();
 
   const [activeTab, setActiveTab] = useState<"today" | "saved">("today");
 
@@ -59,7 +56,7 @@ const MyPlan = () => {
     );
   }, [currentExercises]);
 
-  // Remove exercise after Mark as Done
+  // Remove only from Today's Plan
   const handleRemove = (id: number) => {
     setTodaysPlan((prev) =>
       prev.filter((exercise) => exercise.id !== id)
@@ -149,6 +146,7 @@ const MyPlan = () => {
             >
               Saved
             </button>
+
           </div>
 
           {/* Sort */}
@@ -239,7 +237,8 @@ const MyPlan = () => {
                 </h2>
 
                 <p className="mt-2 max-w-lg text-sm text-gray-500">
-                  Save an exercise from the workout details page and it will appear here.
+                  Save an exercise from the workout details page and it will
+                  appear here.
                 </p>
 
                 <Link
