@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-5">
           
-          {/* Logo */}
+          
           <div className="flex justify-center items-center gap-3">
             <Image
               src={footerImg}
@@ -23,7 +23,7 @@ const Footer = () => {
             </h3>
           </div>
 
-          {/* Copyright */}
+         
           <div className="text-center md:text-right">
             <p className="text-gray-400 text-sm md:text-base">
               © 2026 FitLog — Workout Library.

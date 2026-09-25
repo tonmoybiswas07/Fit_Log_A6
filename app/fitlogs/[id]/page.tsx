@@ -47,7 +47,7 @@ const ExerciseDetails = async ({ params }: PageProps) => {
     <main className="min-h-screen bg-[#0d0f13] px-5 py-8 text-white md:px-8 lg:px-12">
       <div className="mx-auto max-w-[1400px]">
 
-        {/* Main Grid */}
+       
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-14">
 
           
@@ -64,17 +64,17 @@ const ExerciseDetails = async ({ params }: PageProps) => {
           
           <div className="flex flex-col">
 
-            {/* Title */}
+           
             <h1 className="text-4xl font-black uppercase leading-tight tracking-tight sm:text-5xl">
               {exercise.name}
             </h1>
 
-            {/* Description */}
+            
             <p className="mt-4 max-w-2xl text-base leading-6 text-gray-400 sm:text-lg">
               {exercise.description}
             </p>
 
-            {/* Muscle Groups */}
+            
             <div className="mt-5 flex flex-wrap gap-3">
               {exercise.muscleGroups.map((muscle) => (
                 <span
@@ -133,7 +133,7 @@ const ExerciseDetails = async ({ params }: PageProps) => {
                 </span>
               </div>
 
-              {/* Duration */}
+              
               <div className="flex items-center justify-between border-b border-[#292e38] px-6 py-5">
                 <span className="text-xs font-bold uppercase tracking-wide text-gray-400">
                   Duration

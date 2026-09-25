@@ -1,4 +1,3 @@
-
 "use client";
 
 import Link from "next/link";
@@ -13,15 +12,12 @@ const MyPlan = () => {
 
   const [activeTab, setActiveTab] = useState<"today" | "saved">("today");
 
-  const [sortBy, setSortBy] = useState<
-    "duration" | "calories" | "rating"
-  >("duration");
+  const [sortBy, setSortBy] = useState<"duration" | "calories" | "rating">(
+    "duration",
+  );
 
-  // Current tab exercises
-  const currentExercises =
-    activeTab === "today" ? todaysPlan : savedExercises;
+  const currentExercises = activeTab === "today" ? todaysPlan : savedExercises;
 
-  // Sort exercises
   const sortedExercises = useMemo(() => {
     const data = [...currentExercises];
 
@@ -40,34 +36,27 @@ const MyPlan = () => {
     return data;
   }, [currentExercises, sortBy]);
 
-  // Total minutes
   const totalMinutes = useMemo(() => {
     return currentExercises.reduce(
       (total, exercise) => total + exercise.duration,
-      0
+      0,
     );
   }, [currentExercises]);
 
-  // Total calories
   const totalCalories = useMemo(() => {
     return currentExercises.reduce(
       (total, exercise) => total + exercise.caloriesBurned,
-      0
+      0,
     );
   }, [currentExercises]);
 
-  // Remove only from Today's Plan
   const handleRemove = (id: number) => {
-    setTodaysPlan((prev) =>
-      prev.filter((exercise) => exercise.id !== id)
-    );
+    setTodaysPlan((prev) => prev.filter((exercise) => exercise.id !== id));
   };
 
   return (
     <main className="min-h-screen bg-[#0d0f13] px-4 py-10 text-white sm:px-6 lg:px-10">
       <div className="mx-auto max-w-7xl">
-
-        {/* Header */}
         <div className="mb-7">
           <h1 className="text-3xl font-black uppercase tracking-tight sm:text-4xl">
             My Plan
@@ -78,37 +67,26 @@ const MyPlan = () => {
           </p>
         </div>
 
-        {/* Stats */}
         <div className="rounded-2xl border-2 border-[#00d9c6] bg-[#11151b] p-5 sm:p-7">
           <div className="grid grid-cols-1 overflow-hidden border border-[#202630] sm:grid-cols-3">
-
-            {/* Exercises */}
             <div className="px-5 py-3 sm:border-r sm:border-[#202630]">
-              <p className="text-sm text-gray-400">
-                Exercises
-              </p>
+              <p className="text-sm text-gray-400">Exercises</p>
 
               <p className="mt-1 text-4xl font-black leading-none text-[#c2ff29]">
                 {currentExercises.length}
               </p>
             </div>
 
-            {/* Minutes */}
             <div className="border-t border-[#202630] px-5 py-3 sm:border-t-0 sm:border-r">
-              <p className="text-sm text-gray-400">
-                Minutes
-              </p>
+              <p className="text-sm text-gray-400">Minutes</p>
 
               <p className="mt-1 text-4xl font-black leading-none text-white">
                 {totalMinutes}
               </p>
             </div>
 
-            {/* Calories */}
             <div className="border-t border-[#202630] px-5 py-3 sm:border-t-0">
-              <p className="text-sm text-gray-400">
-                Calories
-              </p>
+              <p className="text-sm text-gray-400">Calories</p>
 
               <p className="mt-1 text-4xl font-black leading-none text-white">
                 {totalCalories}
@@ -117,12 +95,8 @@ const MyPlan = () => {
           </div>
         </div>
 
-        {/* Tabs + Sort */}
         <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-
-          {/* Tabs */}
           <div className="tabs tabs-box bg-[#15181e] p-1">
-
             <button
               type="button"
               onClick={() => setActiveTab("today")}
@@ -146,43 +120,27 @@ const MyPlan = () => {
             >
               Saved
             </button>
-
           </div>
 
-          {/* Sort */}
           <div className="flex items-center gap-3">
-            <span className="text-sm text-gray-500">
-              Sort By
-            </span>
+            <span className="text-sm text-gray-500">Sort By</span>
 
             <select
               value={sortBy}
               onChange={(e) =>
-                setSortBy(
-                  e.target.value as
-                    | "duration"
-                    | "calories"
-                    | "rating"
-                )
+                setSortBy(e.target.value as "duration" | "calories" | "rating")
               }
               className="select select-bordered h-10 min-h-0 w-32 border-[#292e38] bg-[#15181e] text-sm text-white focus:border-[#c2ff29] focus:outline-none"
             >
-              <option value="duration">
-                Duration
-              </option>
+              <option value="duration">Duration</option>
 
-              <option value="calories">
-                Calories
-              </option>
+              <option value="calories">Calories</option>
 
-              <option value="rating">
-                Rating
-              </option>
+              <option value="rating">Rating</option>
             </select>
           </div>
         </div>
 
-        {/* ================= TODAY'S PLAN ================= */}
         {activeTab === "today" && (
           <>
             {sortedExercises.length > 0 ? (
@@ -197,7 +155,6 @@ const MyPlan = () => {
               </div>
             ) : (
               <div className="mt-7 flex min-h-[320px] flex-col items-center justify-center rounded-2xl border border-dashed border-[#292e38] bg-[#0f1116] px-5 text-center">
-
                 <h2 className="text-2xl font-black uppercase text-white">
                   Nothing Here Yet
                 </h2>
@@ -207,7 +164,7 @@ const MyPlan = () => {
                 </p>
 
                 <Link
-                  href="/fitlog"
+                  href="/"
                   className="btn mt-6 rounded-full border-none bg-[#c2ff29] px-7 text-sm font-bold text-black hover:bg-[#b4ef20]"
                 >
                   Go to workouts
@@ -217,21 +174,16 @@ const MyPlan = () => {
           </>
         )}
 
-        {/* ================= SAVED ================= */}
         {activeTab === "saved" && (
           <>
             {sortedExercises.length > 0 ? (
               <div className="mt-7 space-y-4">
                 {sortedExercises.map((exercise) => (
-                  <SaveCard
-                    key={exercise.id}
-                    data={exercise}
-                  />
+                  <SaveCard key={exercise.id} data={exercise} />
                 ))}
               </div>
             ) : (
               <div className="mt-7 flex min-h-[320px] flex-col items-center justify-center rounded-2xl border border-dashed border-[#292e38] bg-[#0f1116] px-5 text-center">
-
                 <h2 className="text-2xl font-black uppercase text-white">
                   No Saved Exercises
                 </h2>

@@ -85,7 +85,7 @@ const Navbar = () => {
           
           <div className="hidden items-center gap-3 sm:flex">
 
-            {/* PLAN */}
+           
             <Link
               href="/myplan"
               className="group flex items-center gap-2 rounded-full transition-transform duration-200 hover:scale-105"
@@ -99,7 +99,7 @@ const Navbar = () => {
               </span>
             </Link>
 
-            {/* SAVED */}
+           
             <Link
               href="/myplan"
               className="group flex items-center gap-2 rounded-full transition-transform duration-200 hover:scale-105"
@@ -123,7 +123,7 @@ const Navbar = () => {
             className="flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white transition-colors hover:bg-white/10 lg:hidden"
           >
             {mobileMenuOpen ? (
-              /* CLOSE ICON */
+              
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -139,7 +139,7 @@ const Navbar = () => {
                 />
               </svg>
             ) : (
-              /* MENU ICON */
+             
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -162,7 +162,7 @@ const Navbar = () => {
         {mobileMenuOpen && (
           <div className="border-t border-white/10 py-4 lg:hidden">
 
-            {/* MOBILE NAV LINKS */}
+            
             <nav>
               <ul className="space-y-2">
                 {navLinks.map((link) => {
@@ -195,7 +195,7 @@ const Navbar = () => {
          
             <div className="mt-4 flex items-center gap-3 border-t border-white/10 pt-4">
 
-              {/* MOBILE PLAN */}
+             
               <Link
                 href="/myplan"
                 onClick={() => setMobileMenuOpen(false)}
@@ -210,7 +210,7 @@ const Navbar = () => {
                 </span>
               </Link>
 
-              {/* MOBILE SAVED */}
+             
               <Link
                 href="/myplan"
                 onClick={() => setMobileMenuOpen(false)}
